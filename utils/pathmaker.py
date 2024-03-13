@@ -2,13 +2,17 @@ from config_files import config
 
 
 class Pathmaker:
+    """
+    Stores a path as a list to avoid confusing paths and avoid accidentally using // somewhere in the path etc.
+    """
+
     def __init__(self, path: list):
         self.path = path
 
     def __str__(self):
         path = ''
-        for dir in self.path:
-            path += f'/{dir}'
+        for element in self.path:
+            path += f'/{element}'
         return path
 
     def resolve(self) -> str:

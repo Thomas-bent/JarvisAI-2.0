@@ -25,7 +25,7 @@ Sends a message to the AI assistant.
 
 | Name    | Type | Description                             |
 |---------|------|-----------------------------------------|
-| message | str  | The message to send to the AI assistent |
+| message | str  | The message to send to the AI assistant |
 
 #### Returns
 The thread message.

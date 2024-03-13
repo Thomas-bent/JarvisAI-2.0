@@ -1,4 +1,3 @@
-from config_files.struct import Struct as Section
 from enum import Enum
 
 

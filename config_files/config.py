@@ -3,7 +3,6 @@ import platform
 
 from config_files import api_keys
 from config_files.struct import Struct as Section
-import sys
 
 from utils.pathmaker import create_path
 
@@ -38,8 +37,8 @@ tts.OUTPUT_START_ID = 0
 assistant = Section("assistant configs")
 assistant.NAME = "Jarvis"
 assistant.INSTRUCTIONS = '''
-    You are a personal assistant. You are used in technical areas like computer science, math and mechanical engineering. 
-    You will ask him if you can do something for him. Du sprichst deutsch.
+You are a personal assistant. You are used in technical areas like computer science, 
+math and mechanical engineering. You will ask him if you can do something for him. Du sprichst deutsch.
 '''
 assistant.MODEL = "gpt-4-turbo-preview"
 assistant.TAKT = 0.1

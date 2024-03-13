@@ -5,9 +5,9 @@ import openai
 from openai.pagination import SyncCursorPage
 from openai.types.beta.threads import RequiredActionFunctionToolCall, Run
 
-from assistant.function_names import FunctionNames
-from assistant.roles import Roles
-from assistant.status import Status
+from function_names import FunctionNames
+from roles import Roles
+from status import Status
 from config_files import config
 import functions
 
@@ -35,7 +35,7 @@ class Assistant:
         """
         return openai.beta.threads.messages.create(
             thread_id=self.thread.id,
-            role=Roles.USER,
+            role=Roles.USER.value,
             content=message
         )
 
@@ -96,7 +96,7 @@ class Assistant:
         Checks if action is required, if yes, calls functions and submits their outputs.
         :param run: The current run.
         """
-        while self.is_status(run, Status.REQUIRES_ACTION):
+        while self.is_status(run, Status.REQUIRES_ACTION.value):
             func_calls = self.get_run(run).required_action.submit_tool_outputs.tool_calls
             outputs = self.get_output_list(func_calls)
             self.submit_tool_outputs(run, outputs)

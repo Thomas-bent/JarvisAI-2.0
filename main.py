@@ -1,5 +1,3 @@
-import os
-
 from IO.input import Input
 from IO.output import Output
 from assistant.assistant import Assistant

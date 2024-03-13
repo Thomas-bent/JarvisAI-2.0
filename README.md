@@ -34,10 +34,10 @@ You can write your own functions inside the ```/assistant/functions.py``` file. 
 
 ```python3
 elif function_name == FunctionNames.YOUR_FUNCTION
-return functions.your_function(args['your_arg'], args['your_arg...'])
+    return functions.your_function(args['your_arg'], args['your_arg...'])
 ```
 
-At last, add the function to the tools. Therefore you have to create an object in the ```/config_files/config.py```
+At last, add the function to the tools. Therefore, you have to create an object in the ```/config_files/config.py```
 file. Write it into ```assistant.TOOLS``` in the following format:
 
 ```json

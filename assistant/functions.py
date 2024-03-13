@@ -33,7 +33,7 @@ def create_file(filename: str, path: str) -> str:
     try:
         file = open(location, 'x')
         file.close()
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         return 'File could not be created!'
     return location
 

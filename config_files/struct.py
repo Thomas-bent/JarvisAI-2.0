@@ -5,7 +5,7 @@ class Struct(object):
 
     def __repr__(self):
         if self.__header__ is None:
-             return super(Struct, self).__repr__()
+            return super(Struct, self).__repr__()
         return self.__header__
 
     def next(self):
@@ -17,7 +17,7 @@ class Struct(object):
     def __iter__(self):
         """
         Fake iteration functionality.
-        We skip magic attribues and Structs, and return the rest.
+        We skip magic attributes and Structs, and return the rest.
         """
         ks = self.__dict__.keys()
         for k in ks:
@@ -29,5 +29,4 @@ class Struct(object):
         Don't count magic attributes or Structs.
         """
         ks = self.__dict__.keys()
-        return len([k for k in ks if not k.startswith('__')\
-                    and not isinstance(k, Struct)])
+        return len([k for k in ks if not k.startswith('__') and not isinstance(k, Struct)])
