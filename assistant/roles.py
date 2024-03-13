@@ -1,5 +1,6 @@
-from config_files.struct import Struct as Section
+from enum import Enum
 
-Roles = Section("roles in the chat")
-Roles.USER = "user"
-Roles.ASSISTANT = "assistant"
+
+class Roles(Enum):
+    USER = "user"
+    ASSISTANT = "assistant"
