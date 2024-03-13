@@ -140,15 +140,15 @@ class Assistant:
         :param args: Function arguments.
         :return: Output of the function.
         """
-        if function_name == FunctionNames.CAPTURE_IMAGE:
+        if function_name == FunctionNames.CAPTURE_IMAGE.value:
             return functions.capture_image(args['filename'])
-        elif function_name == FunctionNames.CREATE_FILE:
+        elif function_name == FunctionNames.CREATE_FILE.value:
             return functions.create_file(args['filename'], args['path'])
-        elif function_name == FunctionNames.CREATE_FOLDER:
+        elif function_name == FunctionNames.CREATE_FOLDER.value:
             return functions.create_folder(args['folder_name'], args['path'])
-        elif function_name == FunctionNames.WRITE_FILE:
+        elif function_name == FunctionNames.WRITE_FILE.value:
             return functions.write_file(args['filename'], args['content'], args['path'])
-        elif function_name == FunctionNames.CONSOLE_COMMAND:
+        elif function_name == FunctionNames.CONSOLE_COMMAND.value:
             return functions.console_command(args['command'])
         else:
             return f"The function '{ function_name }' was not found"
