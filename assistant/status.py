@@ -1,3 +1,5 @@
+from enum import Enum
+
 from config_files.struct import Struct as Section
 
 Status = Section()

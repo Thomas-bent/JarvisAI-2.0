@@ -1,13 +1,26 @@
-import json
-import time
+import os
 
-import config_files.config as config
+from IO.input import Input
+from IO.output import Output
 from assistant.assistant import Assistant
-from assistant.status import Status
+from config_files import config
+
+#####################################################################################
+#   AI ASSISTANT
+#   VERSION 2.0.0
+#   BY THOMAS BENTLOHNER
+#####################################################################################
 
 jarvis = Assistant()
-user_input = ""
+output = Output()
+user_input = Input()
+text = ""
 
-while 'verlassen' not in user_input:
-    user_input = input("[USER]: ")
-    print(jarvis.message_and_response(user_input))
+while 'verlassen' not in text:
+
+    text = user_input.audio_input()
+    print(f"[USER] { text }")
+    ans = jarvis.message_and_response(text)
+    output.interact(ans)
+    print(f"[{config.assistant.NAME}] { ans }")
+    output.play()
