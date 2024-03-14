@@ -2,6 +2,7 @@ import os
 
 from config_files import config
 from utils.pathmaker import create_path, create_priority_path
+from backend import linker
 import cv2
 
 
@@ -75,3 +76,7 @@ def console_command(command: str) -> str:
     """
     os.system(command)
     return 'executed'
+
+
+def get_contacts() -> list[str]:
+    return linker.get('/contacts').json()

@@ -45,5 +45,121 @@ assistant.TAKT = 0.1
 assistant.TOOLS = [
     {
         "type": "code_interpreter"
+    }, {
+        "type": "function",
+        "function": {
+            "name": "capture_image",
+            "description": "Captures an image with the camera.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "file-name": {
+                        "type": "string",
+                        "description": "the name of the image."
+                    }
+                },
+                "required": [
+                    "file-name"
+                ]
+            }
+        }
+    }, {
+        "type": "function",
+        "function": {
+            "name": "create_file",
+            "description": "creates a new file.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "file-name": {
+                        "type": "string",
+                        "description": "The name of the new file."
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path that leads to the new file."
+                    }
+                },
+                "required": [
+                    "file-name",
+                    "path"
+                ]
+            }
+        }
+    }, {
+        "type": "function",
+        "function": {
+            "name": "create_folder",
+            "description": "Creates a new folder.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "folder-name": {
+                        "type": "string",
+                        "description": "The name of the new folder."
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path that leads to the new folder."
+                    }
+                },
+                "required": [
+                    "folder-name",
+                    "path"
+                ]
+            }
+        }
+    }, {
+        "type": "function",
+        "function": {
+            "name": "write_file",
+            "description": "Writes the provided content into the provided file.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "file-name": {
+                        "type": "string",
+                        "description": "The name of the file that will be written into."
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "The content that will be written."
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path that leads to the file."
+                    }
+                },
+                "required": [
+                    "file-name",
+                    "content",
+                    "path"
+                ]
+            }
+        }
+    }, {
+        "type": "function",
+        "function": {
+            "name": "console_command",
+            "description": "Executes the provided command in the CLI.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "command": {
+                        "type": "string",
+                        "description": "The command that will be executed."
+                    }
+                },
+                "required": [
+                    "command"
+                ]
+            }
+        }
     }
 ]
+
+# Backend settings
+backend = Section()
+backend.PORT = 8000
+backend.HOSTNAME = f"localhost:{backend.PORT}"
+backend.URL = f"http://{backend.HOSTNAME}"

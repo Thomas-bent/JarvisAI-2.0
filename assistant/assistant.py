@@ -5,11 +5,11 @@ import openai
 from openai.pagination import SyncCursorPage
 from openai.types.beta.threads import RequiredActionFunctionToolCall, Run
 
-from function_names import FunctionNames
-from roles import Roles
-from status import Status
+from assistant.function_names import FunctionNames
+from assistant.roles import Roles
+from assistant.status import Status
 from config_files import config
-import functions
+import assistant.functions
 
 
 class Assistant:
@@ -76,8 +76,8 @@ class Assistant:
         """
         self.send_message(message)
         run = self.run_thread()
-        while self.get_run(run).status != Status.COMPLETED:
-            if self.get_run(run).status == Status.REQUIRES_ACTION:
+        while self.get_run(run).status != Status.COMPLETED.value:
+            if self.get_run(run).status == Status.REQUIRES_ACTION.value:
                 self.function_calling(run)
             time.sleep(config.assistant.TAKT)
         return self.get_messages().data[0].content[0].text.value
