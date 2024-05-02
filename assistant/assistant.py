@@ -101,7 +101,7 @@ class Assistant:
             outputs = self.get_output_list(func_calls)
             self.submit_tool_outputs(run, outputs)
 
-            while not self.get_run(run).status in [Status.QUEUED, Status.COMPLETED, Status.REQUIRES_ACTION]:
+            while not self.get_run(run).status in [Status.QUEUED.value, Status.COMPLETED.value, Status.REQUIRES_ACTION.value]:
                 time.sleep(config.assistant.TAKT)
 
     def submit_tool_outputs(self, run: Run, outputs: list[dict[str, str]]) -> None:
