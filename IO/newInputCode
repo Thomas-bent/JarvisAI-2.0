@@ -1,0 +1,32 @@
+from gtts import gTTS
+import os
+
+def text_to_speech(text, language='de', filename='output.mp3'):
+    """
+    Konvertiert den eingegebenen Text in eine Sprachdatei.
+    
+    :param text: Der Text, der in Sprache umgewandelt werden soll.
+    :param language: Die Sprache der Sprachausgabe (Standard: Deutsch 'de').
+    :param filename: Der Name der Ausgabedatei (Standard: 'output.mp3').
+    """
+    try:
+        # Text in Sprache umwandeln
+        tts = gTTS(text=text, lang=language, slow=False)
+        
+        # Audiodatei speichern
+        tts.save(filename)
+        
+        print(f"Sprachausgabe erfolgreich erstellt: {filename}")
+        
+        # Audiodatei abspielen (optional)
+        if os.name == 'nt':  # Windows
+            os.system(f"start {filename}")
+        else:  # MacOS oder Linux
+            os.system(f"afplay {filename}" if os.name == 'posix' else f"mpg321 {filename}")
+            
+    except Exception as e:
+        print(f"Fehler bei der Sprachausgabe: {e}")
+
+# Beispielverwendung
+text_input = input("Geben Sie den Text ein, der in Sprache umgewandelt werden soll: ")
+text_to_speech(text_input)
